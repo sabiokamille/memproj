@@ -12,25 +12,27 @@ void printMemContent(void *start_addr, void *end_addr) {
     printf("Start address: %p\n", start_addr);
     printf("End address: %p\n", end_addr);
 
-    printf("%llu\n", sizeof(start_addr));
+    while(iter < (start_addr + 0x40)) {
+        printf("%p: ", iter); // print the address
+        for (int i = 0; i < 16; i++) {
+            printf("%hhx",*(((unsigned char*) iter)+ i)); //print the 16 bytes of content 
+                                                                 // at memory address
 
-    for (int i = 0; i < sizeof(start_addr); i++) {
-                printf("%x",*(((unsigned char*) &start_addr)+ i)); //print the contents of memory at address
+        }
+        printf(" ");
+        for (int i = 0; i < 16; i++) {
+            printf("%c",*(((unsigned char*) iter)+ i)); //print the 16 bytes of content 
+                                                              // at memory address
 
-    }
-        /*
-    for(iter; iter < end_addr; iter + sizeof(start_addr)) {
-        printf("%0x : ", iter); // print the address
-        for (int i = 0; i < sizeof(iter); i++) {
-                printf("%02x ",(char *) iter); //print the contents of memory at address
-
-        } 
-    } */
+        }
+        printf("\n");
+        iter += 16;
+    } 
     
 }
 
 int main(int argc, char **argv) {
-    int testVar = 12;
-    printf("%p", &testVar);
+    char testVar[] = "My name is Kam!\n";
+    //printf("%p", &testVar);
     printMemContent(&testVar,environ[0]);
 }
