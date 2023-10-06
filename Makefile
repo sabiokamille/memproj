@@ -1,12 +1,15 @@
 CC = gcc
 CFLAGS = -Wall -g -std=c99 -fsanitize=address,undefined
-OBJS = memory.o
+OBJS = memory-test.o memory.o
+TARGET: memory-test memory
 
-all: memory
+all: $(TARGET)
 
-memory: $(OBJS)
-	$(CC) $(CFLAGS) -o $@  $^	
-memory.o: memory.c
-	$(CC) $(CFLAGS) -c $^
+memory-test: memory-test.o memory.o
+	$(CC) $(CFLAGS) -o $@ $^
+
+memory: memory.o
+	$(CC) $(CFLAGS) -o $@ $^
+
 clean:
-	rm -rf *.o memory
+	rm -rf *.o $(TARGET)
