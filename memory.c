@@ -3,7 +3,8 @@
 void getMemContent(void *start_addr, void *end_addr) {
     void* iter = start_addr; //this iterator is used when looping through 
                              // memory and will increment by 16 bytes
-    int iter2 = *(int *)iter;
+    int iter2 = *(int *)iter; //have to fix this iterator to move through the 
+                              //memory correctly
     printf("Start address: %p\n", start_addr);
     printf("End address:   %p\n", end_addr);
 
