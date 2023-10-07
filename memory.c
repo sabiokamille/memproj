@@ -23,7 +23,8 @@ void getMemContent(void *start_addr, void *end_addr) {
 
         }
         printf("\n");
-        iter += 16;
+        iter += 16; // this works when incrementing by 64, but not when
+                    //incrementing by 64
     }
     
 }
