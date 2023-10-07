@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 void printMemContent(void *start_addr, void *end_addr);
 void print_stack(void *start_addr, void *end_addr);
